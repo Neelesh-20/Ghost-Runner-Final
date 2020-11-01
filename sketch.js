@@ -1,4 +1,4 @@
-var towerimg, tower, doorimg, door, doorsGroup, climberimg, climber, climberGroup, ghostimg, ghostimg2, ghost, sound, gameState = "play"
+var towerimg, tower, doorimg, door, doorsGroup, climberimg, climber, climberGroup, ghostimg, ghostimg2, ghost, sound, gameState = "play", score = 0
 
 function preload() {
   towerimg = loadImage("tower.png")
@@ -27,6 +27,9 @@ function setup() {
 function draw() {
   background("black")
   if (gameState == "play") {
+    if(frameCount % 5 == 0){
+      score = score + 1
+      }
     if (tower.y > 600) {
       tower.y = 300
     }
@@ -60,6 +63,9 @@ function draw() {
     textSize(20)
     text("Game Over", 250, 300)
   }
+  textSize(20)
+  fill("white")
+  text("Score : "+ score, 500, 30)
 }
 
 function SpawnDoors() {
